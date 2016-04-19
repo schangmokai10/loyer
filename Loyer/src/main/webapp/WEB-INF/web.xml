@@ -19,7 +19,7 @@
     </session-config>
     <welcome-file-list>        
         <welcome-file>
-            faces/recherche.xhtml
+            faces/adminLoyer.xhtml
         </welcome-file>
     </welcome-file-list>
     <listener>        

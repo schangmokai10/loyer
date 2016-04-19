@@ -21,7 +21,9 @@ import javax.faces.bean.RequestScoped;
 @ManagedBean
 @RequestScoped
 public class AdminLoyerBean {
+    
     @ManagedProperty(value = "#{IAdminService}")
+    
     private IAdminService iAdminService;
     
     private AdminLoyer admins = new AdminLoyer();
@@ -75,7 +77,12 @@ public class AdminLoyerBean {
     
     public List<AdminLoyer> findAll() throws ServiceException{
     
-    
+           List<AdminLoyer> liste = iAdminService.findAll();
+        for (AdminLoyer col : liste) {
+            System.out.println("****************" + col.getNom()+"*********************");
+
+            }
+        
     return iAdminService.findAll();
     
     }
