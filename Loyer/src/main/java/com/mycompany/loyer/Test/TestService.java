@@ -36,7 +36,7 @@ public class TestService {
         adm.setPrenom("Brahim");
         service.create(adm);
 
-             System.out.println(adm.getNom());
+             System.out.println("SUCESSS");
        
        
        
