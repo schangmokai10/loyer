@@ -41,78 +41,56 @@ and open the template in the editor.
             <p:layoutUnit position="center">  
            <f:view>
 
-            <p:dialog widgetVar="dlg" header=" Enregistrer un nouveau Administrateur" hideEffect="fold" showEffect="explode" resizable="true">
+            <p:dialog widgetVar="dlg" header=" Enregistrer une Location" hideEffect="fold" showEffect="explode" resizable="true">
                 <h:form enctype="multipart/form-data">
                     <p:panelGrid columns="2">
-                    <p:outputLabel value="Login:" for="login" />
-                    <p:inputText id="login" value="#{adminLoyerBean.admins.login}" title="Login" />
-                    <p:outputLabel value="Passwd:" for="passwd" />
-                    <p:inputText id="passwd" value="#{adminLoyerBean.admins.passwd}" title="Passwd" />
-                    <p:outputLabel value="Nom:" for="nom" />
-                    <p:inputText id="nom" value="#{adminLoyerBean.admins.nom}" title="Nom" />
-                    <p:outputLabel value="Prenom:" for="prenom" />
-                    <p:inputText id="prenom" value="#{adminLoyerBean.admins.prenom}" title="Prenom" />
+                    <p:outputLabel value="DateDelvrance:" for="dateDelvrance" />
+                    <p:inputText id="dateDelvrance" value="#{rappelBean.rappel.dateDelvrance}" title="DateDelvrance" />
+                    <p:outputLabel value="RapelClient:" for="rapelClient" />
+                    <p:inputText id="rapelClient" value="#{rappelBean.rappel.rapelClient}" title="RapelClient" />
                 </p:panelGrid>
-                    <p:commandButton value="Enregistrer" action="#{adminLoyerBean.create()}"  oncomplete="PF('dlg').hide()" update=":tableForm:table"/>
+                <p:commandButton value="Enregistrer" action="#{rappelBean.create()}"  oncomplete="PF('dlg').hide()" update=":tableForm:table"/>
                 </h:form>
             </p:dialog> 
-
-
-            <p:dialog widgetVar="dl" header=" Modifier un Administrateur" hideEffect="fold" showEffect="explode" resizable="true">
+            <p:dialog widgetVar="dl" header=" Modifier un rappel" hideEffect="fold" showEffect="explode" resizable="true">
                 <h:form id="formModifier" enctype="multipart/form-data">                
                     <p:panelGrid columns="2" id="panelGModifier">
-                    <p:outputLabel value="Login:" for="login" />
-                    <p:inputText id="login" value="#{adminLoyerBean.admins.login}" title="Login" />
-                    <p:outputLabel value="Passwd:" for="passwd" />
-                    <p:inputText id="passwd" value="#{adminLoyerBean.admins.passwd}" title="Passwd" />
-                    <p:outputLabel value="Nom:" for="nom" />
-                    <p:inputText id="nom" value="#{adminLoyerBean.admins.nom}" title="Nom" />
-                    <p:outputLabel value="Prenom:" for="prenom" />
-                    <p:inputText id="prenom" value="#{adminLoyerBean.admins.prenom}" title="Prenom" />
-                    <h:inputHidden id="number" value="#{adminLoyerBean.admins.id}" />
+                    <p:outputLabel value="DateDelvrance:" for="dateDelvrance" />
+                    <p:inputText id="dateDelvrance" value="#{rappelBean.rappel.dateDelvrance}" title="DateDelvrance" />
+                    <p:outputLabel value="RapelClient:" for="rapelClient" />
+                    <p:inputText id="rapelClient" value="#{rappelBean.rappel.rapelClient}" title="RapelClient" />
+                    <h:inputHidden id="number" value="#{rappelBean.rappel.id}" />
                    </p:panelGrid>
-                <p:commandButton value="Modifier"  action="#{adminLoyerBean.update()}"  oncomplete="PF('dl').hide()" update=":tableForm:table" />
+                <p:commandButton value="Modifier"  action="#{rappelBean.update()}"  oncomplete="PF('dl').hide()" update=":tableForm:table" />
                 </h:form>
             </p:dialog> 
             
         </f:view>
 
         
-        
          <f:view> 
             <h:form id='tableForm'>
-                <p:dataTable value="#{adminLoyerBean.findAll()}" var="item" paginator="true" rows="5" paginatorTemplate=" {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} " id="table" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{adminLoyerBean.admins}" rowKey="#{item.id}">
+                <p:dataTable value="#{rappelBean.findAll()}" var="item" paginator="true" rows="5" paginatorTemplate=" {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} " id="table" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{rappelBean.rappel}" rowKey="#{item.id}">
+                    
                     <f:facet name="header">
-                        La liste des administrateurs
+                        La liste des Rappels
                     </f:facet>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Login"/>
+                            <h:outputText value="DateDelvrance"/>
                         </f:facet>
-                        <h:outputText value="#{item.login}"/>
+                        <h:outputText value="#{item.dateDelvrance}"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
-                            <h:outputText value="Passwd"/>
+                            <h:outputText value="RapelClient"/>
                         </f:facet>
-                        <h:outputText value="#{item.passwd}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Nom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.nom}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">
-                            <h:outputText value="Prenom"/>
-                        </f:facet>
-                        <h:outputText value="#{item.prenom}"/>
+                        <h:outputText value="#{item.rapelClient}"/>
                     </p:column>
                </p:dataTable>
                      <p:commandButton  onclick="PF('dl').show()" value="Modifier" update=":formModifier:panelGModifier" icon="ui-icon-arrowrefresh-1-w"/>
                     </h:form>
-                </f:view>  
+            </f:view>  
 
             </p:layoutUnit>  
              <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  

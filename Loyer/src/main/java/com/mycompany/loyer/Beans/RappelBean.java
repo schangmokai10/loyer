@@ -22,10 +22,9 @@ import javax.faces.bean.RequestScoped;
 public class RappelBean {
  
     @ManagedProperty(value = "#{IRappelService}")
-    
-        private IRappelService iRappelService;
+    private IRappelService iRappelService;
         
-        Rappel oRappel = new Rappel();
+    private Rappel rappel = new Rappel();
 
     public RappelBean() {
     }
@@ -38,19 +37,19 @@ public class RappelBean {
         this.iRappelService = iRappelService;
     }
 
-    public Rappel getoRappel() {
-        return oRappel;
+    public Rappel getRappel() {
+        return rappel;
     }
 
-    public void setoRappel(Rappel oRappel) {
-        this.oRappel = oRappel;
+    public void setRappel(Rappel rappel) {
+        this.rappel = rappel;
     }
-        
-        
-    public Rappel create () throws ServiceException{
+
     
         
-    return iRappelService.create(oRappel);
+        
+    public Rappel create () throws ServiceException{    
+    return iRappelService.create(rappel);
     
     }
     
@@ -58,12 +57,12 @@ public class RappelBean {
     public Rappel update() throws ServiceException{
     
     
-    return iRappelService.update(oRappel);
+    return iRappelService.update(rappel);
     }
  
     public Rappel findById() throws ServiceException{
     
-    return iRappelService.findById(oRappel.getId());
+    return iRappelService.findById(rappel.getId());
     
     }
     
@@ -75,10 +74,6 @@ public class RappelBean {
         
     return iRappelService.findAll();
     
-    }
-    
-    
-    
-    
+    }  
     
 }

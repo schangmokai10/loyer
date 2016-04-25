@@ -5,12 +5,153 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Application de gestion des emploies de temps</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+    </h:head>
+    <h:body>
+
+
+
+        <p:layout fullPage="true">  
+
+            <p:layoutUnit position="north" size="100" header="Page d'un Administrateur" resizable="true" closable="true" collapsible="true">  
+                <div id="menu">
+                    <ui:include src="menu1.xhtml"/>
+                </div>
+            </p:layoutUnit>  
+
+            <p:layoutUnit position="south" size="100" header="Bottom" resizable="true" closable="true" collapsible="true">  
+                <h:outputText value="South unit content." />  
+            </p:layoutUnit>  
+
+            <p:layoutUnit position="west" size="200" header="Left" resizable="true" closable="true" collapsible="true">  
+                <div id="menu">
+                    <ui:include src="menu2.xhtml"/>
+                </div>
+            </p:layoutUnit>  
+
+           
+
+            <p:layoutUnit position="center">  
+           <f:view>
+
+            <p:dialog widgetVar="dlg" header=" Enregistrer une Location" hideEffect="fold" showEffect="explode" resizable="true">
+                <h:form enctype="multipart/form-data">
+                    <p:panelGrid columns="2">
+                     <p:outputLabel value="LocationClient:" for="locationClient" />
+                     <p:selectOneMenu id="locationClient" value="#{locationBean.location.locationClient}" >
+                         <!-- TODO: update below reference to list of available items-->
+                         <f:selectItems value="#{fixme}"/>
+                     </p:selectOneMenu>
+                     <p:outputLabel value="DateDebut:" for="dateDebut" />
+                     <p:inputText id="dateDebut" value="#{locationBean.location.dateDebut}" title="DateDebut" />
+                     <p:outputLabel value="DateFin:" for="dateFin" />
+                     <p:inputText id="dateFin" value="#{locationBean.location.dateFin}" title="DateFin" />
+                     <p:outputLabel value="MontantMensuel:" for="montantMensuel" />
+                     <p:inputText id="montantMensuel" value="#{locationBean.location.montantMensuel}" title="MontantMensuel" />
+                     <p:outputLabel value="LocationMaison:" for="locationMaison" />
+                     <p:selectOneMenu id="locationMaison" value="#{locationBean.location.locationMaison}" >
+                         <!-- TODO: update below reference to list of available items-->
+                         <f:selectItems value="#{fixme}"/>
+                     </p:selectOneMenu>
+                </p:panelGrid>
+                    <p:commandButton value="Enregistrer" action="#{adminLoyerBean.create()}"  oncomplete="PF('dlg').hide()" update=":tableForm:table"/>
+                </h:form>
+            </p:dialog> 
+
+
+            <p:dialog widgetVar="dl" header=" Modifier une Location" hideEffect="fold" showEffect="explode" resizable="true">
+                <h:form id="formModifier" enctype="multipart/form-data">                
+                    <p:panelGrid columns="2" id="panelGModifier">
+                    <p:outputLabel value="LocationClient:" for="locationClient" />
+                    <p:selectOneMenu id="locationClient" value="#{locationBean.location.locationClient}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <p:outputLabel value="DateDebut:" for="dateDebut" />
+                    <p:inputText id="dateDebut" value="#{locationBean.location.dateDebut}" title="DateDebut" />
+                    <p:outputLabel value="DateFin:" for="dateFin" />
+                    <p:inputText id="dateFin" value="#{locationBean.location.dateFin}" title="DateFin" />
+                    <p:outputLabel value="MontantMensuel:" for="montantMensuel" />
+                    <p:inputText id="montantMensuel" value="#{locationBean.location.montantMensuel}" title="MontantMensuel" />
+                    <p:outputLabel value="LocationMaison:" for="locationMaison" />
+                    <p:selectOneMenu id="locationMaison" value="#{locationBean.location.locationMaison}" >
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{fixme}"/>
+                    </p:selectOneMenu>
+                    <h:inputHidden id="number" value="#{locationBean.location.id}" />
+                   </p:panelGrid>
+                <p:commandButton value="Modifier"  action="#{locationBean.update()}"  oncomplete="PF('dl').hide()" update=":tableForm:table" />
+                </h:form>
+            </p:dialog> 
+            
+        </f:view>
+
+        
+         <f:view> 
+            <h:form id='tableForm'>
+                <p:dataTable value="#{locationBean.findAll()}" var="item" paginator="true" rows="5" paginatorTemplate=" {CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} " id="table" rowsPerPageTemplate="5,10,15" selectionMode="single" selection="#{locationBean.location}" rowKey="#{item.id}">
+                    <f:facet name="header">
+                        La liste des location
+                    </f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="LocationClient"/>
+                        </f:facet>
+                        <h:outputText value="#{item.locationClient}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateDebut"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateDebut}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="DateFin"/>
+                        </f:facet>
+                        <h:outputText value="#{item.dateFin}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="MontantMensuel"/>
+                        </f:facet>
+                        <h:outputText value="#{item.montantMensuel}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="LocationMaison"/>
+                        </f:facet>
+                        <h:outputText value="#{item.locationMaison}"/>
+                    </p:column>
+               </p:dataTable>
+                     <p:commandButton  onclick="PF('dl').show()" value="Modifier" update=":formModifier:panelGModifier" icon="ui-icon-arrowrefresh-1-w"/>
+                    </h:form>
+            </f:view>  
+
+            </p:layoutUnit>  
+             <p:layoutUnit position="east" size="200" header="Right" resizable="true" closable="true" collapsible="true" effect="drop">  
+                <p:accordionPanel>
+                    <p:tab title="Nouveau">
+                        <h:form > 
+                            <p:commandButton type="push" onclick="PF('dlg').show()" value="Nouveau" icon="ui-icon-disk"/>
+                        </h:form>
+                    </p:tab>
+                    <p:tab title="Modifier">
+                        <h:form >            
+                            <p:commandButton  onclick="PF('dl').show()" value="Modifier" update=":formModifier:panelGModifier" icon="ui-icon-arrowrefresh-1-w"/>
+                        </h:form>
+                    </p:tab>
+                </p:accordionPanel>
+                 
+            </p:layoutUnit>  
+
+        </p:layout>  
+    </h:body>
 </html>

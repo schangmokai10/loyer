@@ -25,7 +25,7 @@ public class MaisonBean {
     @ManagedProperty(value = "#{IMaisonService}")
     private IMaisonService iMaisonService;
     
-    MaisonLoyer oMaisonLoyer = new MaisonLoyer();
+    private MaisonLoyer maisonLoyer = new MaisonLoyer();
 
     public MaisonBean() {
     }
@@ -34,26 +34,22 @@ public class MaisonBean {
         return iMaisonService;
     }
 
+    public MaisonLoyer getMaisonLoyer() {
+        return maisonLoyer;
+    }
+
+    public void setMaisonLoyer(MaisonLoyer maisonLoyer) {
+        this.maisonLoyer = maisonLoyer;
+    }
+
     public void setiMaisonService(IMaisonService iMaisonService) {
         this.iMaisonService = iMaisonService;
     }
-
-    public MaisonLoyer getoMaisonLoyer() {
-        return oMaisonLoyer;
-    }
-
-    public void setoMaisonLoyer(MaisonLoyer oMaisonLoyer) {
-        this.oMaisonLoyer = oMaisonLoyer;
-    }
-
-  
-  
-  
-        
+     
     public MaisonLoyer create () throws ServiceException{
     
         
-    return iMaisonService.create(oMaisonLoyer);
+    return iMaisonService.create(maisonLoyer);
     
     }
     
@@ -61,23 +57,19 @@ public class MaisonBean {
     public MaisonLoyer update() throws ServiceException{
     
     
-    return iMaisonService.update(oMaisonLoyer);
+    return iMaisonService.update(maisonLoyer);
     }
  
     public MaisonLoyer findById() throws ServiceException{
     
-    return iMaisonService.findById(oMaisonLoyer.getId());
+    return iMaisonService.findById(maisonLoyer.getId());
     
     }
     
     
     
-    public List<MaisonLoyer> findAll() throws ServiceException{
-    
-        
-        
-    return iMaisonService.findAll();
-    
+    public List<MaisonLoyer> findAll() throws ServiceException{     
+       return iMaisonService.findAll();  
     }
     
        

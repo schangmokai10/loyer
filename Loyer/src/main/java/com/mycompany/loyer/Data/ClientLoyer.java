@@ -23,10 +23,10 @@ public class ClientLoyer  extends Personne{
     @Column
     private Date DateLivraison;
 
-     @OneToMany(mappedBy = "locationClient")
+    @OneToMany(mappedBy = "locationClient")
     private List<Location> listLocation;
     
-      @OneToMany(mappedBy = "RapelClient")
+    @OneToMany(mappedBy = "RapelClient")
     private List<Rappel> listRappel;
      
     

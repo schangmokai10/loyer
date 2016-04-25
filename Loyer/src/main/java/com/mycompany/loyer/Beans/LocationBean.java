@@ -6,9 +6,7 @@
 package com.mycompany.loyer.Beans;
 
 import com.mycompany.loyer.Data.Location;
-import com.mycompany.loyer.Data.MaisonLoyer;
 import com.mycompany.loyer.ServiceInter.ILocationService;
-import com.mycompany.loyer.ServiceInter.IMaisonService;
 import com.mycompany.loyer.ServiceInter.ServiceException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -23,10 +21,10 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class LocationBean {
  
-     @ManagedProperty(value = "#{IMaisonService}")
+     @ManagedProperty(value = "#{ILocationService}")
     private ILocationService iLocationService;
      
-    private Location oLocation = new  Location();
+    private Location location;
 
     public LocationBean() {
     }
@@ -39,21 +37,18 @@ public class LocationBean {
         this.iLocationService = iLocationService;
     }
 
-    public Location getoLocation() {
-        return oLocation;
+    public Location getLocation() {
+        return location;
     }
 
-    public void setoLocation(Location oLocation) {
-        this.oLocation = oLocation;
+    public void setLocation(Location location) {
+        this.location = location;
     }
-
-   
-    
         
     public Location create () throws ServiceException{
     
         
-    return iLocationService.create(oLocation);
+    return iLocationService.create(location);
     
     }
     
@@ -61,25 +56,19 @@ public class LocationBean {
     public Location update() throws ServiceException{
     
     
-    return iLocationService.update(oLocation);
+    return iLocationService.update(location);
     }
  
     public Location findById() throws ServiceException{
     
-    return iLocationService.findById(oLocation.getId());
+       return iLocationService.findById(location.getId());
     
     }
     
     
     
-    public List<Location> findAll() throws ServiceException{
-    
-        
-        
-    return iLocationService.findAll();
-    
-    }
-    
-    
+    public List<Location> findAll() throws ServiceException{     
+       return iLocationService.findAll();  
+    } 
     
 }

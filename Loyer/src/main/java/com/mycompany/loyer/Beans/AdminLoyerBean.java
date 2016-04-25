@@ -22,8 +22,7 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 public class AdminLoyerBean {
     
-    @ManagedProperty(value = "#{IAdminService}")
-    
+    @ManagedProperty(value = "#{IAdminService}")   
     private IAdminService iAdminService;
     
     private AdminLoyer admins = new AdminLoyer();

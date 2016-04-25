@@ -19,9 +19,6 @@ public class OrientationBeansLoyer {
 
     public OrientationBeansLoyer() {
     }
-    
-    
-    
     public String accueil() {
         return "accueil";
 
