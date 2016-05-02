@@ -47,9 +47,7 @@ public class OrientationBeansLoyer {
        return "rappel";
    }
         
-   public String site(){
-      return "site";
-     }
+  
   
     
 }

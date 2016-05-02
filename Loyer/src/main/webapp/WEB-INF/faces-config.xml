@@ -16,5 +16,50 @@
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/adminLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>client</from-outcome>
+            <to-view-id>/clientLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>maison</from-outcome>
+            <to-view-id>/maisonLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>rappel</from-outcome>
+            <to-view-id>/rappelLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>location</from-outcome>
+            <to-view-id>/locationLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
+    
+    
     
 </faces-config>

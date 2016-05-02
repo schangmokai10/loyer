@@ -30,7 +30,11 @@ public class MaisonLoyer {
   @OneToMany(mappedBy = "locationMaison")
     private List<Location> listLocation;
     
+  
     
+    @OneToMany(mappedBy = "RapelMaison")
+    private List<Rappel> listRappels;
+          
     public MaisonLoyer() {
     }
 
@@ -65,6 +69,16 @@ public class MaisonLoyer {
     public void setListLocation(List<Location> listLocation) {
         this.listLocation = listLocation;
     }
+
+    public List<Rappel> getListRappels() {
+        return listRappels;
+    }
+
+    public void setListRappels(List<Rappel> listRappels) {
+        this.listRappels = listRappels;
+    }
+    
+    
     
     
 }

@@ -43,22 +43,36 @@ and open the template in the editor.
 
             <p:dialog widgetVar="dlg" header=" Enregistrer une Location" hideEffect="fold" showEffect="explode" resizable="true">
                 <h:form enctype="multipart/form-data">
-                    <p:panelGrid columns="2">
-                    <p:outputLabel value="DateDelvrance:" for="dateDelvrance" />
-                    <p:inputText id="dateDelvrance" value="#{rappelBean.rappel.dateDelvrance}" title="DateDelvrance" />
-                    <p:outputLabel value="RapelClient:" for="rapelClient" />
-                    <p:inputText id="rapelClient" value="#{rappelBean.rappel.rapelClient}" title="RapelClient" />
+                <p:panelGrid columns="2">
+                            <p:outputLabel value="DateDelvrance:" />
+                            <p:calendar value="#{rappelBean.date}" mode="popup"
+                                    showOn="button" />
+                            <p:outputLabel value="RapelClient:"/>            
+                            <p:selectOneMenu  value="#{rappelBean.idclient}" label="departement"  filter="true" filterMatchMode="startsWith" panelStyle="width:220px">
+                                <f:selectItems var="custe" value="#{rappelBean.listeclients}"   itemLabel="#{custe.nom}" itemValue="#{custe.id}" itemLabelEscaped="true" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="RapelMaison:" />
+                            <p:selectOneMenu  value="#{rappelBean.idmaison}" label="departement"  filter="true" filterMatchMode="startsWith" panelStyle="width:220px">
+                                <f:selectItems var="cust" value="#{rappelBean.listemaisons}"   itemLabel="#{cust.adresse} batiment N° : #{cust.numeroBatiment}" itemValue="#{cust.id}" itemLabelEscaped="true" />
+                            </p:selectOneMenu>
                 </p:panelGrid>
                 <p:commandButton value="Enregistrer" action="#{rappelBean.create()}"  oncomplete="PF('dlg').hide()" update=":tableForm:table"/>
                 </h:form>
             </p:dialog> 
             <p:dialog widgetVar="dl" header=" Modifier un rappel" hideEffect="fold" showEffect="explode" resizable="true">
                 <h:form id="formModifier" enctype="multipart/form-data">                
-                    <p:panelGrid columns="2" id="panelGModifier">
-                    <p:outputLabel value="DateDelvrance:" for="dateDelvrance" />
-                    <p:inputText id="dateDelvrance" value="#{rappelBean.rappel.dateDelvrance}" title="DateDelvrance" />
-                    <p:outputLabel value="RapelClient:" for="rapelClient" />
-                    <p:inputText id="rapelClient" value="#{rappelBean.rappel.rapelClient}" title="RapelClient" />
+                   <p:panelGrid columns="2" id="panelGModifier">
+                   <p:outputLabel value="DateDelvrance:" />
+                            <p:calendar value="#{rappelBean.date}" mode="popup"
+                                    showOn="button" />
+                            <p:outputLabel value="RapelClient:"/>            
+                            <p:selectOneMenu  value="#{rappelBean.idclient}" label="departement"  filter="true" filterMatchMode="startsWith" panelStyle="width:220px">
+                                <f:selectItems var="custe" value="#{rappelBean.listeclients}"   itemLabel="#{custe.nom}" itemValue="#{custe.id}" itemLabelEscaped="true" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="RapelMaison:" />
+                            <p:selectOneMenu  value="#{rappelBean.idmaison}" label="departement"  filter="true" filterMatchMode="startsWith" panelStyle="width:220px">
+                                <f:selectItems var="cust" value="#{rappelBean.listemaisons}"   itemLabel="#{cust.adresse}" itemValue="#{cust.id}" itemLabelEscaped="true" />
+                            </p:selectOneMenu>
                     <h:inputHidden id="number" value="#{rappelBean.rappel.id}" />
                    </p:panelGrid>
                 <p:commandButton value="Modifier"  action="#{rappelBean.update()}"  oncomplete="PF('dl').hide()" update=":tableForm:table" />
@@ -85,7 +99,13 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="RapelClient"/>
                         </f:facet>
-                        <h:outputText value="#{item.rapelClient}"/>
+                        <h:outputText value="#{item.rapelClient.nom}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="RapelMaison"/>
+                        </f:facet>
+                        <h:outputText value="#{item.rapelMaison.adresse}"/>
                     </p:column>
                </p:dataTable>
                      <p:commandButton  onclick="PF('dl').show()" value="Modifier" update=":formModifier:panelGModifier" icon="ui-icon-arrowrefresh-1-w"/>

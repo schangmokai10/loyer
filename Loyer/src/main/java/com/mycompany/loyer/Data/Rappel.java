@@ -29,6 +29,8 @@ public class Rappel {
     @ManyToOne
     private ClientLoyer RapelClient;
     
+     @ManyToOne
+    private MaisonLoyer RapelMaison;
 
     public Rappel() {
     }
@@ -55,6 +57,14 @@ public class Rappel {
 
     public void setRapelClient(ClientLoyer RapelClient) {
         this.RapelClient = RapelClient;
+    }
+
+    public MaisonLoyer getRapelMaison() {
+        return RapelMaison;
+    }
+
+    public void setRapelMaison(MaisonLoyer RapelMaison) {
+        this.RapelMaison = RapelMaison;
     }
 
     
