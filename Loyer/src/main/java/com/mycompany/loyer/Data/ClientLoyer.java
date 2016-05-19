@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 public class ClientLoyer  extends Personne{
     @Column
     private String NumeroCni;
+    
     @Column
     private Date DateLivraison;
 
@@ -29,6 +30,9 @@ public class ClientLoyer  extends Personne{
     @OneToMany(mappedBy = "RapelClient")
     private List<Rappel> listRappel;
      
+    
+    @OneToMany(mappedBy = "PayeClient")
+    private List<PayeLoyer> listPayes;
     
     public ClientLoyer() {
     }
@@ -66,6 +70,14 @@ public class ClientLoyer  extends Personne{
 
     public void setDateLivraison(Date DateLivraison) {
         this.DateLivraison = DateLivraison;
+    }
+
+    public List<PayeLoyer> getListPayes() {
+        return listPayes;
+    }
+
+    public void setListPayes(List<PayeLoyer> listPayes) {
+        this.listPayes = listPayes;
     }
     
     

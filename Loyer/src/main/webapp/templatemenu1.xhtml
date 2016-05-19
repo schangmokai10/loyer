@@ -32,10 +32,10 @@
                     </p:submenu>
                 </p:submenu>
             
-                <p:menuitem value="Bonjour : #{orientationBean.administrateur()}" url="#" /> 
+                <p:menuitem value="Bonjour : #{adminLoyerBean.admins.nom}" url="#" /> 
             <f:facet name="options">  
                 <p:inputText style="margin-right:10px"/>  
-                <p:commandButton value="Deconnexion" action="#{orientationBean.administrateur()}" icon="ui-icon-extlink"/>  
+                <p:commandButton value="Deconnexion" action="#{adminLoyerBean.deconnection()}" icon="ui-icon-extlink"/>  
             </f:facet>  
             </p:menubar>
         </div>

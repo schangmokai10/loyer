@@ -9,9 +9,13 @@ import com.mycompany.loyer.Data.AdminLoyer;
 import com.mycompany.loyer.ServiceInter.IAdminService;
 import com.mycompany.loyer.ServiceInter.ServiceException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -90,9 +94,40 @@ public class AdminLoyerBean {
     
     
     
+    public String connection(){
+        
+         try {
+           
+            List<AdminLoyer> list = iAdminService.findAll();
+            for (AdminLoyer list1 : list) {
+                if((list1.getLogin().equals(admins.getLogin()))&&(list1.getPasswd().equals(admins.getPasswd()))){
+                    return "admin";
+                }
+                
+            }
+               
+             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "erreur", "Login ou passwd incorrect.");
+             RequestContext.getCurrentInstance().showMessageInDialog(message);
+             return " ";
+           
+        } catch (ServiceException ex) {
+            Logger.getLogger(AdminLoyerBean.class.getName()).log(Level.SEVERE, null, ex);
+          
+   }
+         return null;
+        
+        
     
     
     
+    }
+    
+    
+    public String deconnection(){
+    
+    
+      return "accueil";
+    }
     
     
     

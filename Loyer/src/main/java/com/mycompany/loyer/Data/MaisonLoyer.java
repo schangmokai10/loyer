@@ -27,8 +27,11 @@ public class MaisonLoyer {
     @Column
     private Long numeroBatiment;
 
-  @OneToMany(mappedBy = "locationMaison")
+   @OneToMany(mappedBy = "locationMaison")
     private List<Location> listLocation;
+   
+   @OneToMany(mappedBy = "PayeMaison")
+    private List<PayeLoyer> listPaye;
     
   
     
@@ -76,6 +79,14 @@ public class MaisonLoyer {
 
     public void setListRappels(List<Rappel> listRappels) {
         this.listRappels = listRappels;
+    }
+
+    public List<PayeLoyer> getListPaye() {
+        return listPaye;
+    }
+
+    public void setListPaye(List<PayeLoyer> listPaye) {
+        this.listPaye = listPaye;
     }
     
     

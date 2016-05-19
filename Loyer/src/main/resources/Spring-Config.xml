@@ -14,8 +14,10 @@
     <bean id="ILocationLoyer" class="com.mycompany.loyer.DaoImpl.LocationDaoImpl"/>
     <bean id="IMaisonLoyer" class="com.mycompany.loyer.DaoImpl.MaisonDaoImpl"/>
     <bean id="IRappelLoyer" class="com.mycompany.loyer.DaoImpl.RappelDaoImpl"/>
-    
-     <!-- la couche servcie-->
+    <bean id="IPayerLoyer" class="com.mycompany.loyer.DaoImpl.PayeLoyerDaoImpl"/>
+
+
+        <!-- la couche servcie-->
     <bean id="IAdminService" class="com.mycompany.loyer.ServiceImplement.AdminLoyerService">
         <property name="iAdminLoyer" ref="IAdminLoyer"/>
     </bean>
@@ -36,6 +38,9 @@
         <property name="iRappelLoyer" ref="IRappelLoyer"/>
     </bean>  
 
+    <bean id="IPayeLoyerService" class="com.mycompany.loyer.ServiceImplement.PayeLoyerService">
+        <property name="iPayerLoyer" ref="IPayerLoyer"/>
+    </bean>             
 
     <!-- couche de persistance JPA -->
     <bean id="entityManagerFactory"

@@ -12,18 +12,19 @@ import javax.faces.bean.RequestScoped;
  *
  * @author oumarou
  */
-
 @ManagedBean
 @RequestScoped
 public class OrientationBeansLoyer {
 
     public OrientationBeansLoyer() {
     }
+
     public String accueil() {
         return "accueil";
 
     }
-     public String admin() {
+
+    public String admin() {
         return "admin";
 
     }
@@ -36,18 +37,17 @@ public class OrientationBeansLoyer {
         return "location";
     }
 
-    
-   public String maison() {
+    public String maison() {
         return "maison";
-    }  
-        
-     
-        
-   public String rappel(){
-       return "rappel";
-   }
-        
-  
-  
-    
+    }
+
+    public String rappel() {
+        return "rappel";
+    }
+
+    public String paye() {
+
+        return "paye";
+    }
+
 }

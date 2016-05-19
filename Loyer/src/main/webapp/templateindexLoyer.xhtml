@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+
+        <title> Application de gestion de loyer Alh Ibrahim Ramat </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+
+        <center><h1>Application de gestion de loyer   </h1>
+            <h2> SOCOBRA sarl </h2>             </center>
+        <div id="header">
+            <div id ="connexion">
+
+
+                <h:form>  
+
+                    <!--p:dialog id="dialog" header="Dynamic Focus" widgetVar="dlg" >  
+
+                        <h:panelGrid columns="2" cellpadding="5">  
+
+                            <h:outputLabel  value="Login:" />  
+                            <p:inputText id="login"  title="Login" />
+
+
+                            <h:outputLabel  value="Passwd:" />  
+                            <p:password id="passwd"  title="Passwd"/>
+
+
+
+                        </h:panelGrid>  
+
+
+                    </p:dialog-->
+                    
+                    <p:tab title="Compte Admin ">           
+                    <h:form> 
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Login:"/>
+                            <p:inputText id="login" value="#{adminLoyerBean.admins.login}" title="Login" />
+                            <p:outputLabel value="Passwd:"/>
+                            <p:password id="passwd" value="#{adminLoyerBean.admins.passwd}" title="Passwd"/>
+                        </p:panelGrid>
+                        <p:commandButton value="connexion" action="#{adminLoyerBean.connection()}" style=" background-color: darkred"/>
+                     </h:form>
+              </p:tab> 
+                    
+
+                </h:form>
+
+
+
+            </div>
+
+        </div>
+
+
+
+    </body>
+</html>

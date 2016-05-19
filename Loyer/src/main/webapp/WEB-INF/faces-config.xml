@@ -60,6 +60,12 @@
         </navigation-case>
     </navigation-rule> 
     
-    
+     <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>paye</from-outcome>
+            <to-view-id>/payeLoyer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
     
 </faces-config>
